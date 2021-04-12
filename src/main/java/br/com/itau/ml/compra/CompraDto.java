@@ -1,5 +1,7 @@
 package br.com.itau.ml.compra;
 
+import br.com.itau.ml.produto.ProdutoDto;
+
 public class CompraDto {
 	
 	private Long id;
@@ -14,15 +16,14 @@ public class CompraDto {
 	
 	private Long pagamentoId;
 	
-	public CompraDto(Long id, ProdutoDto produto, Long qtdProduto, String tipoPagamento, Status status,
-			Long pagamentoId) {
-		super();
-		this.id = id;
-		this.produto = produto;
-		this.qtdProduto = qtdProduto;
-		this.tipoPagamento = tipoPagamento;
-		this.status = status;
-		this.pagamentoId = pagamentoId;
+	
+	public CompraDto(Compra compra) {
+		this.id = compra.getId();
+		this.produto = new ProdutoDto(compra.getProduto());
+		this.qtdProduto = compra.getQtdProduto();
+		this.tipoPagamento = compra.getTipoPagamento();
+		this.status = compra.getStatus();
+		this.pagamentoId = compra.getPagamentoId();
 	}
 
 	public Long getId() {
@@ -48,7 +49,5 @@ public class CompraDto {
 	public Long getPagamentoId() {
 		return pagamentoId;
 	}
-	
-	
 
 }

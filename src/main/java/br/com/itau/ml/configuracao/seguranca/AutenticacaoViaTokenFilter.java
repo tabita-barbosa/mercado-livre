@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.token.TokenService;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import br.com.itau.ml.usuarios.Usuario;
+import br.com.itau.ml.usuarios.UsuarioRepository;
 
 public class AutenticacaoViaTokenFilter extends OncePerRequestFilter{
 
@@ -25,7 +27,8 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter{
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-		throws ServletException, IOException{
+			throws ServletException, IOException{
+		
 		String token = recuperarToken(request);
 		boolean valido = tokenService.isTokenValido(token);
 		if(valido) {

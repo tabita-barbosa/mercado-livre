@@ -1,11 +1,12 @@
 package br.com.itau.ml.configuracao.seguranca;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import br.com.itau.ml.usuarios.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -20,7 +21,7 @@ public class TokenService {
 	private String secret;
 	
 	public String gerarToken(Authentication authetication) {
-		Usuario logado = (Usuario) authentication.getPrincipal();
+		Usuario logado = (Usuario) authetication.getPrincipal();
 		Date hoje = new Date();
 		Date dataExpiracao = new Date(hoje.getTime() + Long.parseLong(expiration));
 		

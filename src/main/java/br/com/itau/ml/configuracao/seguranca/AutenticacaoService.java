@@ -7,6 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import br.com.itau.ml.usuarios.Usuario;
+import br.com.itau.ml.usuarios.UsuarioRepository;
+
 public class AutenticacaoService implements UserDetailsService{
 	
 	@Autowired

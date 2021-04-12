@@ -4,6 +4,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import br.com.itau.ml.produto.Produto;
+import br.com.itau.ml.usuarios.Usuario;
+
 public class CompraForm {
 	
 	@NotNull

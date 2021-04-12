@@ -24,6 +24,12 @@ import javax.validation.constraints.Positive;
 
 import br.com.itau.ml.categoria.Categoria;
 import br.com.itau.ml.compra.Compra;
+import br.com.itau.ml.produto.caracteristica.Caracteristica;
+import br.com.itau.ml.produto.imagem.ImagemProduto;
+import br.com.itau.ml.produto.opiniao.CalculoOpiniao;
+import br.com.itau.ml.produto.opiniao.Opiniao;
+import br.com.itau.ml.produto.pergunta.Pergunta;
+import br.com.itau.ml.usuarios.Usuario;
 
 @Entity
 @Table (name = "tb_produtos")
@@ -47,7 +53,7 @@ public class Produto {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "produto_id")
-	private List<Caracteristicas> caracteristicas = new ArrayList<Caracteristica>();
+	private List<Caracteristica> caracteristicas = new ArrayList<Caracteristica>();
 	
 	@NotBlank
 	@Column(nullable = false, length = 1000)
@@ -79,9 +85,8 @@ public class Produto {
 	public Produto() {}
 
 	public Produto(@NotBlank String nome, @NotNull BigDecimal valor, @NotNull Long quantidade,
-			List<Caracteristicas> caracteristicas, @NotBlank String descricao, @NotNull Categoria categoria,
+			List<Caracteristica> caracteristicas, @NotBlank String descricao, @NotNull Categoria categoria,
 			Usuario usuario) {
-		super();
 		this.nome = nome;
 		this.valor = valor;
 		this.quantidade = quantidade;
@@ -107,10 +112,6 @@ public class Produto {
 		return quantidade;
 	}
 
-	public List<Caracteristicas> getCaracteristicas() {
-		return caracteristicas;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
@@ -125,6 +126,10 @@ public class Produto {
 
 	public LocalDateTime getCadastradoEm() {
 		return cadastradoEm;
+	}
+	
+	public List<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
 	}
 
 	public List<ImagemProduto> getImagens() {
@@ -144,7 +149,7 @@ public class Produto {
 	}
 	
 	public void associaImagens(List<String> links) {
-		List<ImagemProduto> imagens = links.stream();map(link -> new ImagemProduto(this.link)).collect(Collectors.toList());
+		List<ImagemProduto> imagens = links.stream().map(link -> new ImagemProduto(this, link)).collect(Collectors.toList());
 		this.imagens.addAll(imagens);
 	}
 	
