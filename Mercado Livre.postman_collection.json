@@ -1,0 +1,279 @@
+{
+	"info": {
+		"_postman_id": "dd040b34-aa62-4c1b-98dd-61aebc4e76af",
+		"name": "Mercado Livre",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "cadastrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"teste@teste.com\",\r\n    \"senha\": \"testando\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cadastrar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cadastrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"teste@teste.com\",\r\n    \"senha\": \"testando\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/logar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categoriaMae",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Casa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "categoriaFilha",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Cama, Mesa e Banho\",\r\n    \"nomeCategoriaMae\": \"Casa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/categorias",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "produtos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Conjunto Cama Box\",\r\n    \"valor\": 79.90,\r\n    \"quantidade\": 100,\r\n    \"caracteristicas\": [\r\n        {\r\n            \"nome\": \"Fronhas\",\r\n            \"descricao\": \"para travesseiros grandes\"\r\n        },\r\n        {\r\n            \"nome\": \"Colcha\",\r\n            \"descricao\": \"para dimensões de cama box\"\r\n        },\r\n        {\r\n            \"nome\": \"Lençol\",\r\n            \"descricao\": \"300 fios persas\"\r\n        }\r\n    ],\r\n    \"descricao\": \"Baratíssimo\",\r\n    \"nomeCategoria\": \"Cama, Mesa e Banho\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/produtos",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "opiniao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"notas\": 4,\r\n    \"titulo\": \"Produto bom\",\r\n    \"descricao\": \"Itens de ótima qualidade\",\r\n    \"nomeProduto\": \"Conjunto Cama Box\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/produtos/{1}/opiniao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos",
+						"{1}",
+						"opiniao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pergunta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Essa fronha rasga?\",\r\n    \"nomeProduto\": \"Conjunto Cama Box\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/produtos/{1}/pergunta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produtos",
+						"{1}",
+						"pergunta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "compraPaypal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"qtdProduto\": 10,\r\n    \"tipoPagamento\": \"paypal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/compras/{1}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"compras",
+						"{1}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "compraPagseguro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"qtdProduto\": 10,\r\n    \"tipoPagamento\": \"pagseguro\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/compras/{1}",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"compras",
+						"{1}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "javainuse",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
